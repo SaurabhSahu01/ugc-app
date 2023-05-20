@@ -8,7 +8,9 @@ function Home() {
   const [index, setIndex] = React.useState(1);
   return (
     <div className='min-h-screen w-full'>
-      <TopNavigation index={index} setIndex={setIndex}/>
+      <div className='sticky top-0 w-full bg-blue-100/80'>
+        <TopNavigation index={index} setIndex={setIndex}/>
+      </div>
       {(index === 1) && <Search/>}
       {(index === 2) && <AddUpload/>}
     </div>
