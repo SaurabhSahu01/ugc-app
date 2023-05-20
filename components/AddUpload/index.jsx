@@ -1,8 +1,9 @@
 import React from 'react'
-import Image from 'next/image';
 import fileIcon from "../../public/fileicon.png";
+import FadeLoader from "react-spinners/FadeLoader";
 
 function AddUpload() {
+    const [loading, setLoading] = React.useState(false);
     const [file, setFile] = React.useState(null);
     const [filename, setFilename] = React.useState(null);
 
@@ -20,12 +21,24 @@ function AddUpload() {
             method: "POST",
             body: formData
         }).then(res => res.json())
-            .then(data => console.log(data))
+            .then(data => {
+                console.log(data);
+                setLoading(false);
+            })
             .catch(err => console.log(err))
     }
 
     return (
-        <div className='flex flex-col justify-center items-center min-h-screen'>
+        <div className='flex flex-col justify-around items-center min-h-screen'>
+            {loading && <div className='w-full min-h-screen z-50 fixed top-0 bg-white/80 flex items-center justify-center'>
+                <FadeLoader
+                    color={"#42b9f5"}
+                    loading={loading}
+                    size={30}
+                    aria-label="Loading Spinner"
+                    data-testid="loader"
+                />
+            </div>}
             <div className='h-full flex flex-col justify-center items-center gap-5'>
                 <span className='text-xl font-bold text-blue-500'>Upload an Excel File </span>
                 {filename && <div className='flex flex-col justify-center items-center'>
@@ -41,14 +54,56 @@ function AddUpload() {
                         setFilename(null);
                         setFile(null);
                     }}>Cancel</span>
-                    <span className='bg-blue-500 p-2 rounded-md text-white cursor-pointer' onClick={() => handleFileSubmit()}>Upload</span>
+                    <span className='bg-blue-500 p-2 rounded-md text-white cursor-pointer' onClick={() => {
+                        setLoading(true);
+                        handleFileSubmit();
+                    }}>Upload</span>
                 </div>}
             </div>
             <div>
                 <span className='text-xl font-bold text-blue-500'>-----OR-----</span>
             </div>
-            <div className='h-full'>
-                <span className='text-xl font-bold text-blue-500'>Add a Data</span>
+            <div className='h-full w-full flex flex-col justify-center items-start gap-5 p-4 m-2 bg-blue-50'>
+                <span className='text-xl font-bold text-blue-500 text-center'>Add a Data</span>
+                <div className='flex flex-row justify-center items-center gap-3'>
+                    <span>Subject</span>
+                    <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                </div>
+                <div className='flex flex-row justify-center items-center gap-3'>
+                    <span>Category</span>
+                    <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                </div>
+                <div className='flex flex-row justify-center items-center gap-3'>
+                    <span>Year</span>
+                    <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                </div>
+                <div className='flex flex-row justify-center items-center gap-3'>
+                    <span>Month</span>
+                    <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                </div>
+                <div className='flex flex-col justify-center items-start gap-3 py-2'>
+                    <span className='text-xl font-semibold tracking-widest'>Assistant Professor</span>
+                    <div className='flex flex-row justify-center items-center gap-3'>
+                        <span>Cut-off percent</span>
+                        <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                    </div>
+                    <div className='flex flex-row justify-center items-center gap-3'>
+                        <span>Total</span>
+                        <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                    </div>
+                </div>
+                <div className='flex flex-col justify-center items-start gap-3 py-2'>
+                    <span className='text-xl font-semibold tracking-widest'>JRF & Assistant Professor</span>
+                    <div className='flex flex-row justify-center items-center gap-3'>
+                        <span>Cut-off percent</span>
+                        <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                    </div>
+                    <div className='flex flex-row justify-center items-center gap-3'>
+                        <span>Total</span>
+                        <input type="text" onChange={(e) => e.target.value = e.target.value.toUpperCase()} className='outline-none border-blue-400 border-[0.5px] rounded-md p-2'></input>
+                    </div>
+                </div>
+                <span className='p-2 text-white bg-blue-500 rounded-md'>Submit</span>
             </div>
         </div>
     )

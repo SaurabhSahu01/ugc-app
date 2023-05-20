@@ -14,11 +14,11 @@ export default async function(data, year){
 
     let subject = replaceSlashSemicolon(data?.Subject.toUpperCase());
     let category = data?.Category.toUpperCase()
-    return await db.collection(subject).doc('CATEGORY').collection(category).add({
+    return await db.collection(subject).doc('CATEGORY').collection(category).doc(year).set({
         AsstProfCutOffPercentile: data['Assistant Professor'],
         AsstProfTotal: data.__EMPTY,
         JRFAsstProfCutOffPercentile: data['JRF & Assistant Professor'],
         JRFAsstProfTotal: data.__EMPTY_1,
         Year: year
-    })
+    }, {merge: true})
 }

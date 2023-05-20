@@ -9,7 +9,6 @@ export const config = {
 
 const uploadHandler = async (req, res) => {
   if (req.method === "POST") {
-    let data = [];
 
     const form = new formidable.IncomingForm();
 
@@ -20,13 +19,11 @@ const uploadHandler = async (req, res) => {
       } 
       else {
         if (files.file) {
-          addToDatabase(files.file).then(res => {
+          addToDatabase(files.file).then(response => {
             res.status(200).json({
               staus: 200,
               message: "data added succesfully"
             })
-          }).catch(e => {
-            console.log("some error occured");
           })
         }
         else {
