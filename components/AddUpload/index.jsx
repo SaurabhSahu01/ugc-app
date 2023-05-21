@@ -104,7 +104,7 @@ function AddUpload() {
             <div>
                 <span className='text-xl font-bold text-blue-500'>-----OR-----</span>
             </div>
-            <div className='h-full w-full flex flex-col justify-center items-start gap-5 p-4 m-2 bg-blue-50'>
+            <div className='h-full w-full flex flex-col justify-center items-start gap-5 p-4 m-2 bg-slate-50'>
                 <span className='text-xl font-bold text-blue-500 text-center'>Add a Data</span>
                 <div className='flex flex-row justify-center items-center gap-3'>
                     <span>Subject</span>

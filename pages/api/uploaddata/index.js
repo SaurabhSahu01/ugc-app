@@ -5,10 +5,10 @@ export default async function handler(req, res){
         let data = JSON.parse(req.body);
         let year = `${data.year}-${data.month}`
         await db.collection(data.subject).doc('CATEGORY').collection(data.category).doc(year).set({
-            AsstProfCutOffPercentile: Number(data.APCP),
-            AsstProfTotal: Number(data.APTot),
-            JRFAsstProfCutOffPercentile: Number(data.JAPCP),
-            JRFAsstProfTotal: Number(data.JAPTot),
+            AsstProfCutOffPercentile: data.APCP,
+            AsstProfTotal: data.APTot,
+            JRFAsstProfCutOffPercentile: data.JAPCP,
+            JRFAsstProfTotal: data.JAPTot,
             Year: year
         }, {merge: true}).then(res => {
             res.status(200).json({
