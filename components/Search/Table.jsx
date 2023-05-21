@@ -23,9 +23,9 @@ function Table({data}) {
             </div>
         </div>
         {
-            data?.map((item) => {
+            data?.map((item, index) => {
                 return(
-                    <div className='grid grid-cols-5 place-items-center border-[0.5px] border-black text-sm gap-2 py-2'>
+                    <div className='grid grid-cols-5 place-items-center border-[0.5px] border-black text-sm gap-2 py-2' key={index}>
                         <span className='bg-green-100'>{item.Year}</span>
                         <span className='bg-yellow-100'>{item.AsstProfCutOffPercentile}</span>
                         <span className='bg-red-100'>{item.AsstProfTotal}</span>

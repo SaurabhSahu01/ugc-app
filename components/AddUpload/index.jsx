@@ -21,9 +21,9 @@ function AddUpload() {
     }
 
     function handleFileSubmit() {
-        console.log("submitting the form data");
+        // console.log("submitting the form data");
         const formData = new FormData();
-        console.log(formData)
+        // console.log(formData)
         formData.append('file', file);
         fetch('/api/upload', {
             method: "POST",
@@ -31,7 +31,7 @@ function AddUpload() {
         }).then(res => res.json())
             .then(finalresponse => {
                 setLoading(false);
-                console.log(finalresponse)
+                // console.log(finalresponse.message);
             })
             .catch(err => console.log(err))
     }
@@ -65,7 +65,7 @@ function AddUpload() {
                 setYear('');
                 setSubject('');
                 setLoading(false);
-                console.log(data.data);
+                // console.log(data.data);
             })
     }
 
@@ -104,7 +104,7 @@ function AddUpload() {
             <div>
                 <span className='text-xl font-bold text-blue-500'>-----OR-----</span>
             </div>
-            <div className='h-full w-full flex flex-col justify-center items-start gap-5 p-4 m-2 bg-slate-50'>
+            <div className='h-full w-full flex flex-col justify-center items-start gap-5 p-4 m-2 bg-blue-50'>
                 <span className='text-xl font-bold text-blue-500 text-center'>Add a Data</span>
                 <div className='flex flex-row justify-center items-center gap-3'>
                     <span>Subject</span>
