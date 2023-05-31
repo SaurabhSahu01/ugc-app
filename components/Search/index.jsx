@@ -48,36 +48,40 @@ function Search() {
     <div className='w-full flex flex-col justify-around items-center mt-3 gap-4'>
       {loading && <div className='w-full min-h-screen z-50 fixed top-0 bg-white/80 flex items-center justify-center'>
         <FadeLoader
-          color={"#42b9f5"}
+          color={"#3C5998"}
           loading={loading}
           size={30}
           aria-label="Loading Spinner"
           data-testid="loader"
         />
       </div>}
-      <div className='w-full flex flex-row justify-center items-center gap-3'>
-        <span className='text-md font-semibold'>Subject</span>
-        <select className='py-2 w-[260px] text-[12px] font-medium outline-none border-[0.5px] border-blue-400 rounded-md' onChange={e => setSubject(e.target.value)}>
-          <option value="">---SELECT SUBJECT---</option>
-          {
-            searchData?.map((item, index) => {
-              return <option value={item} key={index}>{item}</option>
-            })
-          }
-        </select>
+      <div className='w-full border-b-[1px] border-[#3C5998] py-5'>
+      <div className='flex xs:flex-col md:flex-row justify-center items-center xs:gap-2 md:gap-5]'>
+        <div className='flex flex-row justify-center items-center gap-3'>
+          <span className='text-md font-light text-[#3C5998]'>Subject</span>
+          <select className='py-2 w-[260px] text-[12px] font-medium outline-none border-[0.5px] border-[#3C5998] rounded-md' onChange={e => setSubject(e.target.value)}>
+            <option value="">---SELECT SUBJECT---</option>
+            {
+              searchData?.map((item, index) => {
+                return <option value={item} key={index}>{item}</option>
+              })
+            }
+          </select>
+        </div>
+        <div className='flex flex-row justify-center items-center gap-3'>
+          <span className='text-md font-light text-[#3C5998]'>Category</span>
+          <select className='py-2 w-[260px] text-[12px] font-medium outline-none border-[0.5px] border-[#3C5998] rounded-md' onChange={e => setCategory(e.target.value)}>
+            <option value="">---SELECT CATEGORY---</option>
+            {
+              searchCat?.map((item, index) => {
+                return <option value={item} key={index}>{item}</option>
+              })
+            }
+          </select>
+        </div>
+        <span className='py-1 px-3 text-white bg-[#3C5998] rounded-md' onClick={() => (subject && category) && handleSearch()}>Search</span>
       </div>
-      <div className='w-full flex flex-row justify-center items-center gap-3'>
-        <span className='text-md font-semibold'>Category</span>
-        <select className='py-2 w-[260px] text-[12px] font-medium outline-none border-[0.5px] border-blue-400 rounded-md' onChange={e => setCategory(e.target.value)}>
-          <option value="">---SELECT CATEGORY---</option>
-          {
-            searchCat?.map((item, index) => {
-              return <option value={item} key={index}>{item}</option>
-            })
-          }
-        </select>
       </div>
-      <span className='p-2 text-white bg-blue-500 rounded-md' onClick={() => (subject && category) && handleSearch()}>Search</span>
       {fetchedData && <Table data={fetchedData} />}
     </div>
   )

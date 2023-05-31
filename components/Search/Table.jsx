@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./styles.css";
 function Table({ data }) {
     return (
-        <div className='w-screen mt-5'>
+        <div className='w-screen'>
             <table className='w-full'>
                 <tr>
                     <th rowspan="2">Year</th>

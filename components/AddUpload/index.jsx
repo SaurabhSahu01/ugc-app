@@ -73,7 +73,7 @@ function AddUpload() {
         <div className='flex flex-col justify-around items-center min-h-screen'>
             {loading && <div className='w-full min-h-screen z-50 fixed top-0 bg-white/80 flex items-center justify-center'>
                 <FadeLoader
-                    color={"#42b9f5"}
+                    color={"#3C5998"}
                     loading={loading}
                     size={30}
                     aria-label="Loading Spinner"
