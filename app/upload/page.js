@@ -1,15 +1,13 @@
 "use client"
 import React from 'react'
-import Search from '@/components/Search'
 import AddUpload from '@/components/AddUpload'
 
-function Home() {
-  const [index, setIndex] = React.useState(1);
+function Upload() {
   return (
     <div className='min-h-screen w-full'>
-      <Search/>
+        <AddUpload/>
     </div>
   )
 }
 
-export default Home
+export default Upload
