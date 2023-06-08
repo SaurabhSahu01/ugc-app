@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./styles.css";
 function Table({ data }) {
     return (
-        <div className='w-screen'>
+        <div className='min-w-[800px] max-w-[1500px]'>
             <table className='w-full'>
                 <tr>
                     <th rowspan="2">Year</th>

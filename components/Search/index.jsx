@@ -82,7 +82,9 @@ function Search() {
         <span className='py-1 px-3 text-white bg-[#3C5998] rounded-md cursor-pointer' onClick={() => (subject && category) && handleSearch()}>Search</span>
       </div>
       </div>
-      {fetchedData && <Table data={fetchedData} />}
+      <div className='w-screen overflow-x-scroll'>
+        {fetchedData && <Table data={fetchedData} />}
+      </div>
     </div>
   )
 }
