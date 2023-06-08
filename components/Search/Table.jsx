@@ -2,7 +2,7 @@ import React from 'react'
 import styles from "./styles.css";
 function Table({ data }) {
     return (
-        <div className='min-w-[800px] max-w-[1500px]'>
+        <div className='min-w-[800px] max-w-[1500px] mx-auto'>
             <table className='w-full'>
                 <tr>
                     <th rowspan="2">Year</th>
